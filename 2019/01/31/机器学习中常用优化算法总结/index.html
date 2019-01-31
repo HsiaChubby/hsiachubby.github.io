@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/01/31/机器学习中常用优化算法总结/images/gradient_ill.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/31/机器学习中常用优化算法总结/images/mse_ill.jpg">
-<meta property="og:updated_time" content="2019-01-31T03:17:18.000Z">
+<meta property="og:updated_time" content="2019-01-31T03:32:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中常用优化算法总结">
 <meta name="twitter:description" content="优化算法是机器学习中的“方法论”，优化算法会告诉机器应该如何优化学习的进程，让自己能够更好地掌握学习到的知识，本文将针对机器学习领域中常用的几种优化算法进行总结。 梯度下降法梯度下降法与梯度、导数的概念梯度下降法是用来求解无约束优化问题的一种数学方法，通过梯度下降法可以获取到函数的局部极小值。这里存在一个概念“梯度”，梯度的本意实际上是一个向量，及具有方向性和数值性，其表示的是一个函数在改点沿着该">
@@ -360,7 +360,7 @@
 <p>如上图所示，我们对函数f在A点对自变量x求解右导数$f^\prime$，其值为正数，那是因为在A点右侧函数值是增大的，因此，如果要想f值变小，则需要让往左移$x=x_a-\delta f^\prime$；对B点求解右导数，其值为负数，那是因为在B点右侧函数值是变小的，因此，如果想要f值变小，则需要让x往右移$x=x_a-\delta f^\prime$，因此，如果是要使用梯度下降法，则在迭代过程中要在导数的前面加上负号。<br><a id="more"></a></p>
 <h3 id="梯度下降法详解"><a href="#梯度下降法详解" class="headerlink" title="梯度下降法详解"></a>梯度下降法详解</h3><h4 id="应用前提条件"><a href="#应用前提条件" class="headerlink" title="应用前提条件"></a>应用前提条件</h4><p>首先，我们得需要明确梯度下降法并不是万能的，因为在机器学习领域中，存在一个叫做NFL(No Free Launch)定理，这个定理说明了不存在一种模型或者算法能够适应于所有的应用场景。那么既然如此，梯度下降法能够应用于哪些场景中呢。其实从梯度下降法的原理来看，只要我们沿着梯度方向能够寻找到合适的最小值，那么就可以使用梯度下降法，那么如何判断什么样的函数是满足梯度下降法的应用的呢，最简单的一种方法就是判断该函数是否是<strong>下凸函数</strong>，如果一个函数是下凸函数，那么我们就可以针对该函数使用梯度下降法来求解最小值。当然，对于下凸函数可能会存在很多个局部极小值点，那么在这种情况下，使用梯度下降法来求解函数的最小值可能会存在一些偏差，那么此时，会通过一些技术性的措施（比如：采用随机性，分别从不同起始点多次进行梯度下降求解等）来优化我们使用梯度下降法的过程。</p>
 <p>在梯度下降法中，通常需要优先确定以下条件：</p>
-<pre><code>1. 步长,也成为学习率 $\alpha$
+<pre><code>1. 步长,也成为学习率 &apos;$\alpha$&apos;
 2. 目标函数（损失函数，但是在确定损失函数过程$ L(\theta) $，需要优先确定模型$ h\_\theta(x) $）
 </code></pre><p>基于上述两点先决条件，可以获得梯度下降法中最关键的表达式：<br>$ \theta_t = \theta_{t-1}-\alpha \frac{\partial L}{\partial x} $</p>
 <p>下面将分别基于<strong>线性回归模型</strong>来阐述代数形式和矩阵形式下的梯度下降法。</p>

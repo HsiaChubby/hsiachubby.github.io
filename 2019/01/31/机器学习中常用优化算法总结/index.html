@@ -379,15 +379,34 @@
 <pre><code>1. 牛顿法是求解方程零点的方法
 2. 牛顿法利用泰勒展开的一阶近似的零点获得更接近真实零点的点
 3. 牛顿法通过迭代的方法不断的获得更好的解来求得最好的解
-</code></pre><p>首先，假设存在一个函数$f(\vec{x})$,那么利用泰勒展开公式，将其进行一阶泰勒展开$f(\vec{x})=f(\vec{x_0})+\frac{\partial f(\vec{x})}{\partial \vec{x}}|<em>{\vec{x}=\vec{x</em>{0}}}(\vec{x}-\vec{x_0}))$，我们可以求解出展开式的零点，即令<br>$$<br>\begin{split}<br>&amp; f(\vec{x_0})+\frac{\partial f(\vec{x})}{\partial \vec{x}}|<em>{\vec{x}=\vec{x</em>{0}}}(\vec{x}-\vec{x_0}))=0 \<br>=&gt; &amp; \vec{x}_1=\vec{x_0}-\frac{f(\vec{x_0})}{\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_0}}}<br>\end{split}<br>$$<br>然后再在$\vec{x}_1$处进行一阶泰勒展开，如此迭代求解，可以计算得到:<br>$$<br>\vec{x}<em>n=\vec{x</em>{n-1}}-\frac{f(\vec{x_{n-1}})}{\frac{\partial f(\vec{x})}{\partial \vec{x}}|<em>{\vec{x}=\vec{x</em>{n-1}}}}<br>$$<br>然后判断$f(\vec{x_{n-1}})&lt;\epsilon$，如果满足，则停止迭代，说明此时的$\vec{x}_{n-1}$就是函数$f(\vec{x})$的零点。</p>
-<h3 id="基本牛顿优化法"><a href="#基本牛顿优化法" class="headerlink" title="基本牛顿优化法"></a>基本牛顿优化法</h3><p>当我们需要求解一个函数的极值点点的时候，最重要的判断条件就是$\frac{\partial f}{\partial \vec\theta} = 0$，也就是函数的一阶导数为0时所对应的点。那么，如果要用牛顿法来解决最优化的问题，最根本的问题就是，使用牛顿-拉夫森方法来求解$\frac{\partial f}{\partial \vec\theta}$的零点。<br>首先，我们对函数进行二阶泰勒展开：<br>$<br>\begin{split}<br>&amp; f(\vec{x})=f(\vec{x_0})+\frac{\partial f(\vec{x})}{\partial \vec{x}}|<em>{\vec{x}=\vec{x</em>{0}}}(\vec{x}-\vec{x_0}))+\frac{1}{2}\frac{\partial ^{2} f(\vec{x})}{\partial ^{2} \vec{x}}|<em>{\vec{x}=\vec{x</em>{0}}}(\vec{x}-\vec{x_0})^{2}) \<br>\end{split}<br>$<br>对上述公式求导：<br>$$<br>\begin{split}<br>&amp; \frac{\partial f(\vec{x})}{\partial \vec{x}}= &amp;\frac{\partial f(\vec{x})}{\partial \vec{x}}|<em>{\vec{x}=\vec{x</em>{0}}} + \frac{\partial ^{2} f(\vec{x})}{\partial ^{2} \vec{x}}|<em>{\vec{x}=\vec{x</em>{0}}}(\vec{x}-\vec{x_0}) \<br>=&gt; &amp; \vec{x}<em>n=\vec{x</em>{n-1}}-\frac{f(\frac{\partial f(\vec{x})}{\partial \vec{x}}|<em>{\vec{x}=\vec{x</em>{n-1}}}}{\frac{\partial^{2} f(\vec{x})}{\partial^{2} \vec{x}}|<em>{\vec{x}=\vec{x</em>{n-1}}}}<br>\end{split}<br>$$<br>因此，由上述公式可知，我们可以通过函数的一阶导数和二阶导数不断迭代计算出$\vec{x}$,<br>然后判断$\frac{\partial f(\vec{x})}{\partial\vec{x}}|<em>{\vec{x}=\vec{x</em>{n-1}}}&lt;\epsilon$，如果满足，则停止迭代，说明此时的$\vec{x}_{n-1}$就是函数$f(\vec{x})$一阶导数的零点。</p>
+</code></pre><p>首先，假设存在一个函数$f(\vec{x})$,那么利用泰勒展开公式，将其进行一阶泰勒展开$f(\vec{x})=f(\vec{x_0})+\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_{0}}}(\vec{x}-\vec{x_0}))$，我们可以求解出展开式的零点，即令</p>
+<script type="math/tex; mode=display">
+\begin{split}
+& f(\vec{x_0})+\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_{0}}}(\vec{x}-\vec{x_0}))=0 \\
+=> & \vec{x}_1=\vec{x_0}-\frac{f(\vec{x_0})}{\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_0}}}
+\end{split}</script><p>然后再在$\vec{x}_1$处进行一阶泰勒展开，如此迭代求解，可以计算得到:</p>
+<script type="math/tex; mode=display">
+\vec{x}_n=\vec{x_{n-1}}-\frac{f(\vec{x_{n-1}})}{\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_{n-1}}}}</script><p>然后判断$f(\vec{x_{n-1}})&lt;\epsilon$，如果满足，则停止迭代，说明此时的$\vec{x}_{n-1}$就是函数$f(\vec{x})$的零点。</p>
+<h3 id="基本牛顿优化法"><a href="#基本牛顿优化法" class="headerlink" title="基本牛顿优化法"></a>基本牛顿优化法</h3><p>当我们需要求解一个函数的极值点点的时候，最重要的判断条件就是$\frac{\partial f}{\partial \vec\theta} = 0$，也就是函数的一阶导数为0时所对应的点。那么，如果要用牛顿法来解决最优化的问题，最根本的问题就是，使用牛顿-拉夫森方法来求解$\frac{\partial f}{\partial \vec\theta}$的零点。<br>首先，我们对函数进行二阶泰勒展开：<br>$<br>\begin{split}<br>&amp; f(\vec{x})=f(\vec{x_0})+\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_{0}}}(\vec{x}-\vec{x_0}))+\frac{1}{2}\frac{\partial ^{2} f(\vec{x})}{\partial ^{2} \vec{x}}|_{\vec{x}=\vec{x_{0}}}(\vec{x}-\vec{x_0})^{2}) \\<br>\end{split}<br>$<br>对上述公式求导：</p>
+<script type="math/tex; mode=display">
+\begin{split}
+& \frac{\partial f(\vec{x})}{\partial \vec{x}}= &\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_{0}}} + \frac{\partial ^{2} f(\vec{x})}{\partial ^{2} \vec{x}}|_{\vec{x}=\vec{x_{0}}}(\vec{x}-\vec{x_0}) \\
+=> & \vec{x}_n=\vec{x_{n-1}}-\frac{f(\frac{\partial f(\vec{x})}{\partial \vec{x}}|_{\vec{x}=\vec{x_{n-1}}}}{\frac{\partial^{2} f(\vec{x})}{\partial^{2} \vec{x}}|_{\vec{x}=\vec{x_{n-1}}}}
+\end{split}</script><p>因此，由上述公式可知，我们可以通过函数的一阶导数和二阶导数不断迭代计算出$\vec{x}$,<br>然后判断$\frac{\partial f(\vec{x})}{\partial\vec{x}}|_{\vec{x}=\vec{x_{n-1}}}&lt;\epsilon$，如果满足，则停止迭代，说明此时的$\vec{x}_{n-1}$就是函数$f(\vec{x})$一阶导数的零点。</p>
 <p>在机器学习中，二阶导数就是海森矩阵。</p>
 <h3 id="牛顿法的优缺点"><a href="#牛顿法的优缺点" class="headerlink" title="牛顿法的优缺点"></a>牛顿法的优缺点</h3><p>实际上牛顿法与梯度下降法在优化问题上的本质方法是一致的，唯一的区别是在于如何求解的问题，在牛顿法中的海森矩阵就相当于梯度下降法中的学习率（步长）。牛顿法收敛速度相比梯度下降法很快，而且由于海森矩阵的的逆在迭代中不断减小，起到逐渐缩小步长的效果。但是，如果样本量非常大，那么会导致计算海森矩阵的效率很慢，同时还需要大量的计算资源。</p>
 <h2 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h2><p>为了解决牛顿法中求解海森矩阵的问题，我们可以在满足拟牛顿条件的基础上构造一个近似的海森矩阵，用近似值来代替标准的海森矩阵参与计算。常用的近似计算算法有DFP算法，BFGS算法，L-BFGS算法以及Broyden类算法等。<br>//todo</p>
 <hr>
 <h2 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h2><p>最小二乘法也是用来估计这样一种参数，该参数能够使得观测值和理论值之差的平方和最小，通常是用来优化线性模型，从最小二乘法的概念上可知，其应用的目标函数是非常受限的，也就是说，其优化的目标函数必须是服从以下形式的：<br>$L(\theta)=\sum_{i=1}^{m}{(y-y^h)}^2$.<br>为什么要用这个平方和来表示损失函数呢？什么是最小二乘法的理论基础呢？实际上，最小二乘法是符合矩阵投影理论和高斯正态误差理论的。<br>在深入理解最小二乘法之前，我们需要定义<strong>误差</strong>，如果从线性空间的角度来看的话，误差是什么？误差其实就是在空间中寻找两个向量之间的差值最小。如下图，我们可以假设$\vec{b}$是一个标准的值，那么如果存在一个特定的映射模型，将确定为$\vec{a}$，那么我们需要在$\vec{a}$这个向量中寻找出与$\vec{b}$误差最小的一个向量点，也就是$\vec{p}$.<br><img src="/images/mse_ill.jpg" alt=""></p>
 <p>结合线性模型来理解的话，通常$\vec{y}$指的是空间中的一个向量，而线性模型中的参数向量实际上是一种变换，这种变换会将空间中的点$\matrix{X}$映射出$\vec{y^g}$,但是，由于我们通常是无法准确地获得$\matrix{X}$与$\vec{y}$之间的映射关系，一方面是因为数据测量的误差，另一方面是模型本身存在误差；因此，$\vec{y}$与$\vec{y}$之间是存在误差的。实际上，寻找最优模型实际上就是寻找最优的$\vec{a}$。</p>
-<h3 id="最小二乘法的矩阵表示形式"><a href="#最小二乘法的矩阵表示形式" class="headerlink" title="最小二乘法的矩阵表示形式"></a>最小二乘法的矩阵表示形式</h3><p>假设损失函数为$L(\theta) = \frac{1}{2}(\vec{y}-\matrix{X}\theta)^T(\vec{y}-\matrix{X}\theta)$，那么，根据最小二乘法原理，对$L$针对$\theta$求导，并将其赋值为0，从而求解出$\theta$的值。<br>$$<br>\begin{split}<br>\frac{\partial L}{\partial \theta}= &amp;\frac{1}{2}\frac{\partial(\vec{y}^T\vec{y}-\vec{y}^T\matrix{X}\vec{\theta}-\vec{\theta}^{T}\matrix{X}^T\vec{y}+\vec{\theta}^T\matrix{X}^T\matrix{X}\vec{\theta})}{\partial \vec\theta} \<br>=&amp;\frac{1}{2}(-\vec{y}^T\matrix{X}-\frac{\partial{(\vec{\theta}^{T}\matrix{X}^T\vec{y}})^T}{\vec{\theta}}+\vec\theta^T\matrix{X}^T\matrix{X}+\frac{\partial\theta^T }{\partial\vec{\theta}}\matrix{X}^T\matrix{X}\vec{\theta}) \<br>= &amp; \frac{1}{2}(-\vec{y}^T\matrix{X}-\vec{y}^T\matrix{X}+\vec\theta^T\matrix{X}^T\matrix{X}+\frac{(\partial\vec\theta^{T} \cdot \matrix{X}^T\matrix{X}\vec{\theta})^T}{\partial\vec\theta}) \<br>= &amp; \frac{1}{2}(-2\vec{y}^T\matrix{X} + 2\vec\theta^T\matrix{X}^T\matrix{X})=0<br>\end{split}<br>$$<br>基于上式，可以推导出$\vec\theta=(\matrix{X}^T\matrix{X})^{-1}\matrix{X}^T\vec{y}$</p>
+<h3 id="最小二乘法的矩阵表示形式"><a href="#最小二乘法的矩阵表示形式" class="headerlink" title="最小二乘法的矩阵表示形式"></a>最小二乘法的矩阵表示形式</h3><p>假设损失函数为$L(\theta) = \frac{1}{2}(\vec{y}-\matrix{X}\theta)^T(\vec{y}-\matrix{X}\theta)$，那么，根据最小二乘法原理，对$L$针对$\theta$求导，并将其赋值为0，从而求解出$\theta$的值。</p>
+<script type="math/tex; mode=display">
+\begin{split}
+\frac{\partial L}{\partial \theta}= &\frac{1}{2}\frac{\partial(\vec{y}^T\vec{y}-\vec{y}^T\matrix{X}\vec{\theta}-\vec{\theta}^{T}\matrix{X}^T\vec{y}+\vec{\theta}^T\matrix{X}^T\matrix{X}\vec{\theta})}{\partial \vec\theta} \\
+=&\frac{1}{2}(-\vec{y}^T\matrix{X}-\frac{\partial{(\vec{\theta}^{T}\matrix{X}^T\vec{y}})^T}{\vec{\theta}}+\vec\theta^T\matrix{X}^T\matrix{X}+\frac{\partial\theta^T }{\partial\vec{\theta}}\matrix{X}^T\matrix{X}\vec{\theta}) \\
+= & \frac{1}{2}(-\vec{y}^T\matrix{X}-\vec{y}^T\matrix{X}+\vec\theta^T\matrix{X}^T\matrix{X}+\frac{(\partial\vec\theta^{T} \cdot \matrix{X}^T\matrix{X}\vec{\theta})^T}{\partial\vec\theta}) \\
+= & \frac{1}{2}(-2\vec{y}^T\matrix{X} + 2\vec\theta^T\matrix{X}^T\matrix{X})=0
+\end{split}</script><p>基于上式，可以推导出$\vec\theta=(\matrix{X}^T\matrix{X})^{-1}\matrix{X}^T\vec{y}$</p>
 <p>(Notes:一个函数的维度和该函数的微分的维度是保持一致的)</p>
 <h3 id="最小二乘法的应用场景"><a href="#最小二乘法的应用场景" class="headerlink" title="最小二乘法的应用场景"></a>最小二乘法的应用场景</h3><ol>
 <li>模型必须是线性模型，求解的损失函数是误差的平方和，（如果不是线性的，则需要通过非线性函数映射，将其映射为线性模型，eg：$g(\vec{y})=\matrix{X}\vec\theta$,令$h=g(\vec{y})$，则此时可以针对$\vec{h}$与$\matrix{X}$构建线性模型）</li>
@@ -453,6 +472,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/31/基于docker-cookiercutter创建data-science项目/" rel="prev" title="基于docker-cookiercutter创建data-science项目">
+                基于docker-cookiercutter创建data-science项目 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -529,7 +552,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -540,7 +563,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -551,7 +574,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

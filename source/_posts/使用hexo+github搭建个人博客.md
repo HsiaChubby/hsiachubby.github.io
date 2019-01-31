@@ -123,5 +123,6 @@ hexo g -d
 * [ ] 设置”全文阅读“，在具体的md文件中，选择合适的地方，插入**<!-- more -->**
 * [ ] 文章插入图片，在source目录中，创建images目录，该目录用来维护图片信息，当Hexo项目中只用到少量图片时，可以将图片统一放在source/images文件夹中，通过markdown语法访问它们。
 
-
+### 参考文献
+* https://juejin.im/post/5c2dceb1518825079f78574d
 

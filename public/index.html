@@ -259,6 +259,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/机器学习中常用优化算法总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chubby Hsia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chubby的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/31/机器学习中常用优化算法总结/" itemprop="url">机器学习中常用优化算法总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-31T10:41:59+08:00">
+                2019-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>优化算法是机器学习中的“方法论”，优化算法会告诉机器应该如何优化学习的进程，让自己能够更好地掌握学习到的知识，本文将针对机器学习领域中常用的几种优化算法进行总结。</p>
+<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><h3 id="梯度下降法与梯度、导数的概念"><a href="#梯度下降法与梯度、导数的概念" class="headerlink" title="梯度下降法与梯度、导数的概念"></a>梯度下降法与梯度、导数的概念</h3><p>梯度下降法是用来求解无约束优化问题的一种数学方法，通过梯度下降法可以获取到函数的局部极小值。这里存在一个概念“梯度”，梯度的本意实际上是一个向量，及具有方向性和数值性，其表示的是一个函数在改点沿着该方向变化最快（这个方向是往函数值变大的方向），这个变化率实际上就是该梯度的模。因此，在使用梯度下降法的时候，实际上是要求我们选择梯度的反方向进行计算，只有这样才能保证我们能够取到极小值，这也就是为什么在使用导数（导数与梯度实际上是同一个概念，只不过梯度是一种抽象的表述概念，而导数是实际上用来求解梯度的一种数学表示方式，导数值前面的正负号实际上是决定了梯度的方向）进行参数迭代的时候是要在导数的前面加上负号。<br><img src="/images/gradient_ill.jpg" alt=""></p>
+<p>如上图所示，我们对函数f在A点对自变量x求解右导数$f^\prime$，其值为正数，那是因为在A点右侧函数值是增大的，因此，如果要想f值变小，则需要让往左移$x=x_a-\delta f^\prime$；对B点求解右导数，其值为负数，那是因为在B点右侧函数值是变小的，因此，如果想要f值变小，则需要让x往右移$x=x_a-\delta f^\prime$，因此，如果是要使用梯度下降法，则在迭代过程中要在导数的前面加上负号。<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/31/机器学习中常用优化算法总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/使用hexo+github搭建个人博客/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -516,7 +664,7 @@
 * 阐述机器学习中常用的优化方法
 * 从模型的角度出发，深入阐述不同模型，主要从以下几个方面来阐述模型：a. 模型是什么（这种阐述是一种通用型的表述）；b.模型产生的背景与原因（通常是为了解决另一个模型中的缺点，而产生的一种新的模型）；c.模型的应用场景限制或者说是前提条件以及常见的应用场景；d.模型涉及的梳理理论背景知识；e.阐述模型的理论推导
 * 最后，尽可能地能够输出一份相对完整的模型间的整合对比
-</code></pre><p>以上就是本系列希望能够实现的一个目标，希望接下来会有系列2，系列3…，接下来将正式进入本系列的内容当中.<br>
+</code></pre><p>以上就是本系列希望能够实现的一个目标，希望接下来会有系列2，系列3…，接下来将正式进入本系列的内容当中.<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/30/机器学习概论/#more" rel="contents">
@@ -526,7 +674,7 @@
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
     
     
     
@@ -603,7 +751,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +773,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -864,7 +1012,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
